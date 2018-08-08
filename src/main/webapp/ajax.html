@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                $.ajax({
+                    url: 'test.txt1',
+                    success: function (result) {
+                        $('div').html(result);
+                        console.log('success');
+                    },
+                    beforeSend: function () {
+                        console.log('before send...');
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('error...');
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(error);
+                    },
+                    complete: function () {
+                        console.log('complete');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div>https://heweather.com/</div>
+<button>change test</button>
+</body>
+</html>

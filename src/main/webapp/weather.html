@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weather</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                $.ajax({
+                    url: 'https://free-api.heweather.com/s6/weather/now',
+                    type: 'get',
+                    data: {
+                        location: $('input').val(),
+                        key: '3ab8cfb8f24848ce9b0286d42daa6829'
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.HeWeather6[0].status === 'ok') {
+                            var weather = res.HeWeather6[0].now.cond_txt;
+                            var tempreture = res.HeWeather6[0].now.tmp;
+                            $('div').html('<p>天气：' + weather + '</p><p>温度：' + tempreture + '℃</p>');
+                        } else {
+                            $('div').text('Server Error').css('color', 'red');
+                        }
+                    },
+                    error: function (xhr, status, err) {
+                        console.log(status);
+                        console.log(err);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<pre>
+    https://www.heweather.com/documents/api/s6
+
+    https://free-api.heweather.com/s6/weather/now?location=beijing&key=3ab8cfb8f24848ce9b0286d42daa6829
+</pre>
+<input name="city" placeholder="CITY">
+<button>WEATHER</button>
+<div></div>
+</body>
+</html>

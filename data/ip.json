@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "data": {
+    "ip": "123.123.123.123",
+    "country": "中国",
+    "area": "",
+    "region": "北京",
+    "city": "北京",
+    "county": "XX",
+    "isp": "联通",
+    "country_id": "CN",
+    "area_id": "",
+    "region_id": "110000",
+    "city_id": "110100",
+    "county_id": "xx",
+    "isp_id": "100026"
+  }
+}
